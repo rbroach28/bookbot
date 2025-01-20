@@ -4,11 +4,14 @@ def num_of_words(text):
 def character_count(text):
   characters_dict = {}
   words = text.lower().split()
-  for char in text.lower():
-    if char in characters_dict:
-      characters_dict[char] += 1
-    else:
-      characters_dict[char] = 1
+  for word in words:
+    for char in word.lower():
+      is_alpha = char.isalpha()
+      if char in characters_dict:
+        characters_dict[char] += 1
+      elif is_alpha:
+        characters_dict[char] = 1
+  
   return characters_dict
 
 def print_report(text):
